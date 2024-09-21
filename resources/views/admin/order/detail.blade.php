@@ -1,6 +1,6 @@
 @extends('admin.main')
 @section('content')
-<div class="admin-content-main-content-order-list">
+<div style="overflow:scroll; height:600px;" class="admin-content-main-content-order-list">
     <table>
         <thead>
             <tr>
