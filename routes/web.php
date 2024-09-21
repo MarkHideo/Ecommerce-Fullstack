@@ -34,6 +34,9 @@ Route::middleware('auth')->group(function () {
     });
 });
 
+//order
+Route::get('/admin/order/delete', [orderController::class,'delete_order']);
+
 
 //product
 Route::post('/admin/product/add', [productController::class,'insert_product']);
