@@ -10,7 +10,6 @@
                 <th>Giá</th>
                 <th>Số lượng</th>
                 <th>Thành tiền</th>
-                <th>Tùy biến</th>
             </tr>
         </thead>
         <tbody>
@@ -29,7 +28,6 @@
                 <td>{{number_format($product -> price_sale)}}</td>
                 <td>{{$order_detail [$product->id]}}</td>
                 <td>{{number_format($price)}}</td>
-                <td><a class="delete-class" href="">Xóa</a></td>
             </tr>
             @endforeach
             <tr>

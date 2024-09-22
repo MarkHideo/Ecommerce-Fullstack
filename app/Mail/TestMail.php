@@ -13,14 +13,17 @@ class TestMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $nameInfo;
+    public $token;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(public $nameInfo)
+    public function __construct($nameInfo, $token)
     {
-        //
+        $this->nameInfo = $nameInfo;
+        $this->token = $token;
     }
 
     /**
@@ -31,7 +34,7 @@ class TestMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Test Mail culmate',
+            subject: 'Confirm your Order from Culmate',
         );
     }
 

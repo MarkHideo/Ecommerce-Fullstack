@@ -11,7 +11,7 @@
                         <span style="font-size: small;">Please check your <span style="font-style: italic; font-weight: 600; font-size: large;">Email </span>to confirm your Order</span>
                     </p>
                     <br>
-                    <button class="main-btn">Continue shopping</button>
+                    <a href="/"><button class="main-btn">Continue shopping</button></a>
                 </div>
             </div>
         </div>

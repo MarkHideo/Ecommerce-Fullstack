@@ -73,26 +73,32 @@ class FrontendController extends Controller
         Session::put('cart',$cart);
         return redirect('/cart');
     }
-    public function send_cart(Request $request){
+    public function send_cart(Request $request) {
         $token = Str::random(12);
-        $order = new order; 
-        $order -> name = $request -> input('name');
-        $order -> phone = $request -> input('phone');
-        $order -> email = $request -> input('email');
-        $order -> city = $request -> input('city');
-        $order -> district = $request -> input('district');
-        $order -> ward = $request -> input('ward');
-        $order -> address = $request -> input('address');
-        $order -> note = $request -> input('note');
-        $order_detail = json_encode($request -> input('product_id'));
-        $order -> order_detail = $order_detail;
-        $order -> token = $token;
-        $order -> save();
+        $order = new order;
+        $order->name = $request->input('name');
+        $order->phone = $request->input('phone');
+        $order->email = $request->input('email');
+        $order->city = $request->input('city');
+        $order->district = $request->input('district');
+        $order->ward = $request->input('ward');
+        $order->address = $request->input('address');
+        $order->note = $request->input('note');
+        $order_detail = json_encode($request->input('product_id'));
+        $order->order_detail = $order_detail;
+        $order->token = $token;
+        $order->save();
+    
+        // Clear the user's cart after placing the order
         Session::flush('cart');
-        $mailInfo = $order -> email;
-        $nameInfo = $order -> name;
-        $Mail = Mail::to($mailInfo) -> send(new TestMail($nameInfo));
-        Notification::send($order, new EmailNotification($order));    
+    
+        // Send email to user for order confirmation
+        $userEmail = $order->email;
+        Mail::to($userEmail)->send(new TestMail($order->name, $token));
+    
+        // Send email notification to admin (your email)
+        Notification::route('mail', 'doanngochau1211@gmail.com')->notify(new EmailNotification($order));
+    
         return redirect('/order/confirm');
     }
     public function show_login(){
@@ -117,5 +123,17 @@ class FrontendController extends Controller
         return view('order/confirm', [
         'order' => $order
         ]);
+    }
+    public function check_email($token){
+        $order = order::where('token', $token)->first();
+
+        if ($order) {
+            $order->status = 1; // Set status to confirmed (1)
+            $order->save();
+
+            return view('order/success'); // View for successful confirmation
+        }else {
+            return view('order/fail'); // View if token is invalid
+        }
     }
 }   

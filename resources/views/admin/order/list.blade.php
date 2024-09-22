@@ -27,7 +27,13 @@
                 <td>{{$order->note}}</td>
                 <td><a class="edit-class" href="/admin/order/detail/{{$order -> order_detail}}">Xem</a></td>
                 <td>{{$order->created_at}}</td>
-                <td><a class="nonconfirm-order" href="">Chưa xác nhận</a></td>
+                <td>
+                    @if($order->status == 0)
+                        <a class="nonconfirm-order" href="">Chưa xác nhận</a>
+                    @else
+                        <a class="confirm-order" href="">Xác nhận</a>
+                    @endif
+                </td>
                 <td><a onclick= "removeRow(order_id={{$order->id}},url='/admin/order/delete')" class="delete-class" href="">Xóa</a></td>
             </tr>
             @endforeach

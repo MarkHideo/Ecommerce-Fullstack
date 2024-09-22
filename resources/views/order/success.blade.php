@@ -3,7 +3,7 @@
 <section class="order-confirm p-to-top">
         <div class="container">
             <div class="row-flex row-flex-product-detail">
-                <p>Confirm Order: <span style="font-weight: bold;">#3-Successfully</span></p>
+                <p>Confirm Order: <span style="font-weight: bold;">Successfully</span></p>
             </div>
             <div class="row-flex">
                 <div class="order-confirm-content">

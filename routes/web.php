@@ -37,7 +37,6 @@ Route::middleware('auth')->group(function () {
 //order
 Route::get('/admin/order/delete', [orderController::class,'delete_order']);
 
-
 //product
 Route::post('/admin/product/add', [productController::class,'insert_product']);
 Route::get('/admin/product/delete', [productController::class,'delete_product']);
@@ -55,7 +54,7 @@ Route::get('/product/{id}', [FrontendController::class,'show_product']);
 Route::get('/order/confirm',[FrontendController::class,'order_confirm']);
 Route::get('/order/success', function () {return view('order.success');});
 Route::get('/search', [SearchController::class,'search'])->name('search');
-
+Route::get('/order/confirm/{token}', [FrontendController::class, 'check_email']);
 
 //cart
 Route::post('/cart/add', [FrontendController::class,'add_cart']);
