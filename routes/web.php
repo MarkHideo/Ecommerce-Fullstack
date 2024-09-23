@@ -36,13 +36,13 @@ Route::middleware('auth')->group(function () {
         Route::get('order/list', [orderController::class,'list_order']);
         Route::get('order/detail/{order_detail}', [orderController::class,'detail_order']);
         //menu
-        
+        Route::get('/admin/menu/addmenu', [menuController::class, 'add_menu']);
+        Route::get('/admin/menu/listmenu', [menuController::class, 'list_menu']);
     });
 });
 
-Route::get('/admin/menu/addmenu', [menuController::class, 'add_menu']);
+//menu
 Route::post('/admin/menu/addmenu', [menuController::class, 'store']);
-Route::get('/admin/menu/listmenu', [menuController::class, 'list_menu']);
 Route::get('/admin/menu/delete/', [menuController::class, 'delete_menu']);
 Route::get('/admin/menu/editmenu/{id}', [menuController::class, 'edit_menu']);
 Route::post('/admin/menu/editmenu/{id}', [menuController::class, 'update_menu']);
