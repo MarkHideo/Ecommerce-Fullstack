@@ -25,5 +25,13 @@
                 </div>
             </ul>
         </li>
+        <li><a href=""><i class="ri-dashboard-line"></i> Menu <i class="ri-add-box-line"></i></a>
+            <ul class="sub-menu">
+                <div class="sub-menu-item">
+                    <li><a href="/admin/menu/listmenu"><i class="ri-arrow-drop-right-line"></i>Danh sách</a></li>
+                    <li><a href="/admin/menu/addmenu"><i class="ri-arrow-drop-right-line"></i>Thêm</a></li>
+                </div>
+            </ul>
+        </li>
     </ul>
 </div>

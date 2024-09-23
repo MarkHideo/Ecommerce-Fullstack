@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\TestMail;
+use App\Models\menu;
 use App\Models\order;
 use App\Models\product;
 use App\Notifications\Emailnoti;
@@ -18,8 +19,10 @@ class FrontendController extends Controller
 {
     public function index(){
         $products = product::all();
+        $menus = menu::all();
         return view('home',[
-            'products' => $products
+            'products' => $products,
+            'menus'=> $menus
         ]);
     }
     public function show_product(Request $request){
@@ -90,7 +93,7 @@ class FrontendController extends Controller
         $order->save();
     
         // Clear the user's cart after placing the order
-        Session::flush('cart');
+        // Session::flush('cart');
     
         // Send email to user for order confirmation
         $userEmail = $order->email;

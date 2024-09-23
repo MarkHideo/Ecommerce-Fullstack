@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\menuController;
 use App\Http\Controllers\Admin\orderController;
 use App\Http\Controllers\Admin\productController;
 use App\Http\Controllers\Admin\uploadController;
@@ -27,15 +28,24 @@ Route::post('/check_login', [FrontendController::class,'check_login']);
 Route::middleware('auth')->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('/', function () {return view('admin.home');});
+        //product
         Route::get('product/list', [productController::class,'list_product']);
         Route::get('product/create', [productController::class,'add_product']);
+        //order
+        Route::get('/admin/order/delete', [orderController::class,'delete_order']);
         Route::get('order/list', [orderController::class,'list_order']);
         Route::get('order/detail/{order_detail}', [orderController::class,'detail_order']);
+        //menu
+        
     });
 });
 
-//order
-Route::get('/admin/order/delete', [orderController::class,'delete_order']);
+Route::get('/admin/menu/addmenu', [menuController::class, 'add_menu']);
+Route::post('/admin/menu/addmenu', [menuController::class, 'store']);
+Route::get('/admin/menu/listmenu', [menuController::class, 'list_menu']);
+Route::get('/admin/menu/delete/', [menuController::class, 'delete_menu']);
+Route::get('/admin/menu/editmenu/{id}', [menuController::class, 'edit_menu']);
+Route::post('/admin/menu/editmenu/{id}', [menuController::class, 'update_menu']);
 
 //product
 Route::post('/admin/product/add', [productController::class,'insert_product']);

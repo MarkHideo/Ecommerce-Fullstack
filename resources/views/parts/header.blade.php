@@ -13,11 +13,9 @@
       <div class="menu">
         <nav>
           <ul>
-            <li class="link"><a href="#">All Products</a></li>
-            <li class="link"><a href="#">Popular</a></li>
-            <li class="link"><a href="#">New Arrivals</a></li>
-            <li class="link"><a href="#">Ready to ship</a></li>
-            <li class="link"><a href="#">Upcoming Costume</a></li>
+          @foreach($menus as $menu)
+                <li class="link"><a href="{{ $menu->url }}">{{ $menu->name }}</a></li>
+            @endforeach
           </ul>
         </nav>
       </div>
