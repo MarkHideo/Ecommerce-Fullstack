@@ -29,7 +29,7 @@
         </form>
       </div>  
       <div class="other-cart">
-        <li><a href=""><i class="ri-shopping-cart-line" number="0"></i></a></li>
+        <li><a href="/cart"><i class="ri-shopping-cart-line" number="0"></i></a></li>
       </div>
       </div>
     </div>

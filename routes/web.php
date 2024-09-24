@@ -54,7 +54,6 @@ Route::get('/admin/product/delete', [productController::class,'delete_product'])
 Route::get('/admin/product/edit/{id}', [productController::class,'edit_product']);
 Route::post('/admin/product/edit/{id}', [productController::class,'update_product']);
 
-
 //upload
 Route::post('/upload',[uploadController::class,'uploadImage']);
 Route::post('/uploads',[uploadController::class,'uploadImages']);
@@ -67,7 +66,6 @@ Route::get('/order/success', function () {return view('order.success');});
 Route::get('/search', [SearchController::class,'search'])->name('search');
 Route::get('/order/confirm/{token}', [FrontendController::class, 'check_email']);
 Route::get('/category/{id}', [FrontendController::class, 'showCategory'])->name('category.show');
-
 
 //cart
 Route::post('/cart/add', [FrontendController::class,'add_cart']);

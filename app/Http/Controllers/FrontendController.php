@@ -63,10 +63,17 @@ class FrontendController extends Controller
         }
     }
     public function show_cart(){
-        $cart = Session::get('cart');
+        $cart = Session::get('cart', []); // Default to an empty array if 'cart' is not set
+        if (empty($cart)) {
+            return view('cart', [
+                'products' => [] // Pass an empty array if the cart is empty
+            ]);
+        }
+
         $product_id = array_keys($cart);
-        $products = product::whereIn('id',$product_id)->get();
-        return view('cart',[
+        $products = product::whereIn('id', $product_id)->get();
+
+        return view('cart', [
             'products' => $products
         ]);
     }
@@ -99,7 +106,7 @@ class FrontendController extends Controller
         $order->save();
     
         // Clear the user's cart after placing the order
-        // Session::flush('cart');
+        Session::flush('cart');
     
         // Send email to user for order confirmation
         $userEmail = $order->email;
