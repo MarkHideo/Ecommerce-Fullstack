@@ -17,14 +17,20 @@ use Illuminate\Support\Str;
 use Session;
 class FrontendController extends Controller
 {
-    public function index(){
+    public function index() {
         $products = product::all();
-        $menus = menu::all();
-        return view('home',[
-            'products' => $products,
-            'menus'=> $menus
-        ]);
+        $menus = menu::all(); // Fetch all categories
+        return view('home', compact('products', 'menus')); // Make sure to pass 'menus' here
+    }    
+    
+    public function __construct(){
+        $this->middleware(function ($request, $next) {
+            $menus = menu::all(); // Fetch all categories
+            view()->share('menus', $menus); // Share the variable with all views
+            return $next($request);
+        });
     }
+
     public function show_product(Request $request){
         $product = product::find($request->id);
         return view('product',[
@@ -139,4 +145,11 @@ class FrontendController extends Controller
             return view('order/fail'); // View if token is invalid
         }
     }
+    public function showCategory($id) {
+        $category = menu::findOrFail($id);
+        $products = product::where('category_id', $id)->get(); // Assuming you have a category_id in your products
+        $menus = menu::all(); // Fetch all categories
+        return view('category-products', compact('category', 'products', 'menus'));
+    }
+        
 }   

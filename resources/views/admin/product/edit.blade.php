@@ -1,5 +1,6 @@
 @extends('admin.main')
 @section('content')
+
 <form action="" enctype="multipart/form-data" method="post">
 <div class="admin-content-main-content-product-add">
     <div class="admin-content-main-content-left">
@@ -11,6 +12,19 @@
             <input type="text" value="{{$product -> price_normal}}" name="price_normal" placeholder="Giá bán" id="">
             <input type="text" value="{{$product -> price_sale}}" name="price_sale" placeholder="Giá giảm" id="">
         </div>
+        
+        <!-- New Category Dropdown -->
+        <div class="admin-content-main-content-two-input">
+            <select name="category_id" id="category_id">
+                <option value="">Chọn danh mục</option>
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}" {{ $product->category_id == $category->id ? 'selected' : '' }}>
+                        {{ $category->name }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+        
         <textarea value="" name="description" id="editor">{{$product -> description}}</textarea>
         <textarea value="" name="content" id="editor">{{$product -> content}}</textarea>
         <button type="submit" class="main-btn">Cập nhật sản phẩm</button>
@@ -41,6 +55,7 @@
 </div>
 @csrf
 </form>
+
 @endsection
 @section('footer')
     <script src="{{asset('backend\assets\js\product_ajax.js')}}"></script>

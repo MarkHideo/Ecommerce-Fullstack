@@ -28,7 +28,7 @@
         </div>
     </section>
 <!--hot products-->
-<section class="popular">
+<section class="popular"> 
   <div class="container">
     <div class="row-grid">
       <p class="heading-text">All Products</p>

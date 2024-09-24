@@ -608,6 +608,13 @@ footer .row-grid{
     border: 2px solid #000;
 }
 
+/*---category---*/
+
+.category .row-grid-search{
+    grid-template-columns: repeat(5, 19%);
+    gap: 1%;
+}
+
 /*---responsive---*/
 .header-bar-icon, .header-logo-mobile{
     color: #000;

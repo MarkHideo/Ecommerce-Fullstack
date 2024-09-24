@@ -13,9 +13,9 @@
       <div class="menu">
         <nav>
           <ul>
-          @foreach($menus as $menu)
-                <li class="link"><a href="{{ $menu->url }}">{{ $menu->name }}</a></li>
-            @endforeach
+              @foreach($menus as $menu)
+                  <li class="link"><a href="{{ route('category.show', $menu->id) }}">{{ $menu->name }}</a></li>
+              @endforeach
           </ul>
         </nav>
       </div>

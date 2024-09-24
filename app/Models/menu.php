@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class menu extends Model
 {
     use HasFactory;
+    protected $fillable = ['name'];
+
+    public function products() {
+        return $this->hasMany(product::class, 'category_id');
+    }
 }

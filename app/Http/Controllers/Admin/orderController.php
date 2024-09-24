@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class orderController extends Controller
 {
     public function list_order(){
-        $orders = order::all();
+        $orders = Order::orderBy('created_at', 'desc')->get();
         return view('admin.order.list',[
             'orders' => $orders
         ]);

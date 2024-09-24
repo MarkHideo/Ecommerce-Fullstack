@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\menuController;
 use App\Http\Controllers\Admin\orderController;
 use App\Http\Controllers\Admin\productController;
 use App\Http\Controllers\Admin\uploadController;
+use App\Http\Controllers\categoryController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
@@ -36,8 +37,8 @@ Route::middleware('auth')->group(function () {
         Route::get('order/list', [orderController::class,'list_order']);
         Route::get('order/detail/{order_detail}', [orderController::class,'detail_order']);
         //menu
-        Route::get('/admin/menu/addmenu', [menuController::class, 'add_menu']);
-        Route::get('/admin/menu/listmenu', [menuController::class, 'list_menu']);
+        Route::get('menu/addmenu', [menuController::class, 'add_menu']);
+        Route::get('menu/listmenu', [menuController::class, 'list_menu']);
     });
 });
 
@@ -65,6 +66,8 @@ Route::get('/order/confirm',[FrontendController::class,'order_confirm']);
 Route::get('/order/success', function () {return view('order.success');});
 Route::get('/search', [SearchController::class,'search'])->name('search');
 Route::get('/order/confirm/{token}', [FrontendController::class, 'check_email']);
+Route::get('/category/{id}', [FrontendController::class, 'showCategory'])->name('category.show');
+
 
 //cart
 Route::post('/cart/add', [FrontendController::class,'add_cart']);
