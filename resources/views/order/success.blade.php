@@ -11,7 +11,7 @@
                         <span style="font-size: small;">Your Order will be <span style="font-style: italic; font-weight: 600; font-size: large;">Delivered </span>within 3 days</span>
                     </p>
                     <br>
-                    <button class="main-btn">Continue shopping</button>
+                    <a href="/"><button class="main-btn">Continue shopping</button></a>
                 </div>
             </div>
         </div>

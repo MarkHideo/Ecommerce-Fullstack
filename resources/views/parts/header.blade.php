@@ -8,14 +8,15 @@
         <a href="/"><img src="{{asset('frontend/assets/images/logo.png')}}" alt="#"></a>
       </div>
       <div class="header-logo-mobile">
-        <img src="{{asset('frontend/assets/images/logo.png')}}" alt="">
+        <a href="/"><img src="{{asset('frontend/assets/images/logo.png')}}" alt=""></a>
       </div>
       <div class="menu">
         <nav>
           <ul>
-              @foreach($menus as $menu)
-                  <li class="link"><a href="{{ route('category.show', $menu->id) }}">{{ $menu->name }}</a></li>
-              @endforeach
+            <li class="link"><a href="{{ route('products.all') }}">All Products</a></li>
+            @foreach($menus as $menu)
+            <li class="link"><a href="{{ route('category.show', $menu->id) }}">{{ $menu->name }}</a></li>
+            @endforeach
           </ul>
         </nav>
       </div>

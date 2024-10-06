@@ -25,7 +25,6 @@ Route::get('/login', [FrontendController::class,'show_login'])->name('login');
 Route::post('/check_login', [FrontendController::class,'check_login']);
 
 //Admin
-
 Route::middleware('auth')->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('/', function () {return view('admin.home');});
@@ -66,6 +65,7 @@ Route::get('/order/success', function () {return view('order.success');});
 Route::get('/search', [SearchController::class,'search'])->name('search');
 Route::get('/order/confirm/{token}', [FrontendController::class, 'check_email']);
 Route::get('/category/{id}', [FrontendController::class, 'showCategory'])->name('category.show');
+Route::get('/all-products', [FrontendController::class, 'showAllProducts'])->name('products.all');
 
 //cart
 Route::post('/cart/add', [FrontendController::class,'add_cart']);

@@ -18,9 +18,18 @@ use Session;
 class FrontendController extends Controller
 {
     public function index() {
-        $products = product::all();
+        // $products = product::all();
         $menus = menu::all(); // Fetch all categories
-        return view('home', compact('products', 'menus')); // Make sure to pass 'menus' here
+            // Fetch the 'Popular' category by name
+        $popularCategory = menu::where('name', 'Popular')->first(); 
+        
+        // Fetch only the products that belong to the 'Popular' category
+        if ($popularCategory) {
+            $products = product::where('category_id', $popularCategory->id)->get(); 
+        } else {
+            $products = collect(); // Empty collection if no 'Popular' category is found
+        }
+        return view('home', compact('products', 'menus'));
     }    
     
     public function __construct(){
@@ -158,5 +167,9 @@ class FrontendController extends Controller
         $menus = menu::all(); // Fetch all categories
         return view('category-products', compact('category', 'products', 'menus'));
     }
-        
+    // FrontendController
+    public function showAllProducts() {
+        $products = product::all(); // Fetch all products
+        return view('all-products', compact('products')); // Return a view with all products
+    }
 }   

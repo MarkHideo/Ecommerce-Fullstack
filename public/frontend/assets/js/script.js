@@ -110,3 +110,30 @@ function submitSearchForm() {
     document.getElementById('searchForm').submit();
 }
 
+//popular-slider
+document.addEventListener('DOMContentLoaded', function () {
+    const track = document.querySelector('.slider-track');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const products = document.querySelectorAll('.popular-item');
+  
+    let currentIndex = 0;
+    const visibleItems = 4; // Number of products visible at once
+    const itemWidth = products[0].offsetWidth + 15; // 15px is the margin-right
+    const maxIndex = products.length - visibleItems; // Max index before it breaks the row
+  
+    // Move slider to the left or right
+    function moveSlider(direction) {
+      if (direction === 'next' && currentIndex < maxIndex) {
+        currentIndex++;
+      } else if (direction === 'prev' && currentIndex > 0) {
+        currentIndex--;
+      }
+      track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+    }
+  
+    // Event listeners for buttons
+    prevBtn.addEventListener('click', () => moveSlider('prev'));
+    nextBtn.addEventListener('click', () => moveSlider('next'));
+  });
+  

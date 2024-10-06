@@ -31,22 +31,40 @@
 <section class="popular"> 
   <div class="container">
     <div class="row-grid">
-      <p class="heading-text">All Products</p>
+      <p class="heading-text">Popular</p>
     </div>
-    <div class="row-grid row-grid-popular">
-    @foreach ($products as $product)
-      <div class="popular-item">
-        <a href="/product/{{$product -> id}}"><img src="{{asset($product -> image)}}" alt=""></a>
-        <p><a href="/product/{{$product -> id}}">{{$product -> name}}</a></p>
-        <span>{{$product -> material}}</span>
-        <div class="product-item-price">
-          <p>{{number_format($product -> price_sale)}} <sup>đ</sup> <span>{{number_format($product -> price_normal)}}<sup>đ</sup></span></p>
+
+    <!-- Slider Container -->
+    <div class="row-grid row-grid-popular popular-slider-container">
+      <button class="slider-btn prev-btn">&lt;</button> <!-- Left Arrow -->
+
+      <!-- The slider element wrapping the product items -->
+      <div class="popular-slider">
+        <div class="slider-track">
+          @foreach ($products as $product)
+          <div class="popular-item">
+            <a href="/product/{{$product->id}}"><img src="{{asset($product->image)}}" alt=""></a>
+            <p><a href="/product/{{$product->id}}">{{$product->name}}</a></p>
+            <span>{{$product->material}}</span>
+            <div class="product-item-price">
+              <p>{{number_format($product->price_sale)}} <sup>đ</sup> <span>{{number_format($product->price_normal)}}<sup>đ</sup></span></p>
+            </div>
+          </div>
+          @endforeach
         </div>
       </div>
-      @endforeach
+
+      <button class="slider-btn next-btn">&gt;</button> <!-- Right Arrow -->
+    </div>
+    
+    <!-- Slider Pagination (optional) -->
+    <div class="slider-pagination">
+      <span class="pagination-num">1</span>
+      <!-- More page numbers can be generated dynamically if needed -->
     </div>
   </div>
 </section>
+
 
     <!--footer-->
     @include('parts.footer')

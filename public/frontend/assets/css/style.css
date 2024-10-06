@@ -329,6 +329,66 @@ header .menu{
     font-weight: 300;
 }
 
+.popular-slider-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.popular-slider {
+    overflow: hidden; /* Hide overflowed product items */
+    width: 100%; /* Ensure the slider takes the full width */
+}
+
+.slider-track {
+    display: flex; /* Keep products in a horizontal line */
+    transition: transform 0.4s ease; /* Smooth sliding effect */
+}
+
+.popular-item {
+    min-width: 200px; /* Adjust based on your product item size */
+    margin-right: 15px; /* Space between items */
+}
+
+.slider-btn {
+    background-color: #fff;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.prev-btn {
+    left: -30px; /* Position for left arrow */
+}
+
+.next-btn {
+    right: -30px; /* Position for right arrow */
+}
+
+/* Slider pagination styling (optional) */
+.slider-pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.pagination-num {
+    background-color: #eee;
+    padding: 5px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.pagination-num.active {
+    background-color: #333;
+    color: white;
+}  
+
 /*---product detail---*/
 .product-detail .row-flex-product-detail{
     justify-content: flex-start;
